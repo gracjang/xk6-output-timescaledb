@@ -101,7 +101,7 @@ const schema = `
 		delay_abort_eval varchar(128),
 		last_failed boolean DEFAULT FALSE
 	);
-	SELECT create_hypertable('samples', 'ts');
+	SELECT create_hypertable('samples', 'ts', chunk_time_interval => INTERVAL '15 minutes');
 	CREATE INDEX IF NOT EXISTS idx_samples_ts ON samples (ts DESC);
 	CREATE INDEX IF NOT EXISTS idx_thresholds_ts ON thresholds (ts DESC);`
 
